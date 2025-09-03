@@ -1,228 +1,593 @@
 import React from 'react';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+// Sample data for charts
+const projectsData = [
+  { name: 'Jan', value: 70 },
+  { name: 'Website', value: 85 },
+  { name: 'Qualified', value: 75 },
+  { name: 'Proposal', value: 90 },
+  { name: 'Negotiation', value: 65 },
+  { name: 'Dot', value: 80 },
+];
+
+const tasksData = [
+  { name: 'To Do', value: 60, color: '#8b5cf6' },
+  { name: 'In Progress', value: 34, color: '#06b6d4' },
+  { name: 'Done', value: 7, color: '#ec4899' },
+];
+
+const COLORS = ['#8b5cf6', '#06b6d4', '#ec4899'];
 
 export default function DashboardPage() {
   return (
-    <div style={{ padding: '24px', backgroundColor: '#1e1e2f', color: '#fff', minHeight: '100vh' }}>
-      {/* Top Metrics */}
-      <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
+    <div style={{ 
+      padding: '24px', 
+      backgroundColor: '#0f172a', 
+      color: '#fff', 
+      minHeight: '100vh',
+      fontFamily: "'Inter', sans-serif"
+    }}>
+      {/* Header */}
+      <div style={{ marginBottom: '32px' }}>
+        <h1 style={{ 
+          fontSize: '32px', 
+          fontWeight: '600', 
+          margin: '0 0 8px 0',
+          color: '#ffffff'
+        }}>
+          Welcome back, John
+        </h1>
+        <p style={{ 
+          fontSize: '16px', 
+          color: '#94a3b8', 
+          margin: 0 
+        }}>
+          Manage your projects and tasks, from this dashboard
+        </p>
+      </div>
+
+      {/* Top Metrics Cards */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(4, 1fr)', 
+        gap: '24px', 
+        marginBottom: '32px' 
+      }}>
         {[
-          { label: 'Revenues', value: '50.8K', change: '+19%', color: '#4caf50' },
-          { label: 'Expenses', value: '23.6K', change: '-19%', color: '#f44336' },
-          { label: 'Sales', value: '756', change: '', color: '#42a5f5' },
-          { label: 'Inventory Levels', value: '2.3K', change: '+3%', color: '#4caf50' },
-        ].map((metric) => (
+          { 
+            icon: '📋', 
+            label: 'All Projects', 
+            value: '12', 
+            bgColor: '#1e293b',
+            iconColor: '#64748b'
+          },
+          { 
+            icon: '📌', 
+            label: 'To Do', 
+            value: '76', 
+            bgColor: '#1e293b',
+            iconColor: '#8b5cf6'
+          },
+          { 
+            icon: '⚡', 
+            label: 'In Progress', 
+            value: '34', 
+            bgColor: '#1e293b',
+            iconColor: '#06b6d4'
+          },
+          { 
+            icon: '✅', 
+            label: 'Completed', 
+            value: '8', 
+            bgColor: '#1e293b',
+            iconColor: '#10b981'
+          },
+        ].map((metric, index) => (
           <div
-            key={metric.label}
+            key={index}
             style={{
-              flex: 1,
-              backgroundColor: '#29293d',
-              padding: '16px',
+              backgroundColor: metric.bgColor,
+              padding: '24px',
               borderRadius: '12px',
-              boxShadow: `0 0 6px ${metric.color}55`,
+              border: '1px solid #334155',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
             }}
           >
-            <div style={{ fontSize: '14px', color: '#aaa' }}>{metric.label}</div>
-            <div style={{ fontSize: '22px', fontWeight: 'bold', marginTop: '4px' }}>{metric.value}</div>
-            {metric.change && (
-              <div style={{ fontSize: '12px', color: metric.color, marginTop: '4px' }}>{metric.change}</div>
-            )}
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px',
+              color: '#94a3b8',
+              fontSize: '14px'
+            }}>
+              <span style={{ color: metric.iconColor }}>{metric.icon}</span>
+              {metric.label}
+            </div>
+            <div style={{ 
+              fontSize: '36px', 
+              fontWeight: '700', 
+              color: '#ffffff' 
+            }}>
+              {metric.value}
+            </div>
           </div>
         ))}
       </div>
 
       {/* Charts Section */}
-      <div style={{ display: 'flex', gap: '24px', marginBottom: '32px' }}>
-        {/* Sales Over Time */}
-        <div
-          style={{
-            flex: 2,
-            backgroundColor: '#29293d',
-            padding: '16px',
-            borderRadius: '12px',
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: '2fr 1fr', 
+        gap: '24px', 
+        marginBottom: '32px' 
+      }}>
+        {/* Projects Overview Chart */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginBottom: '24px'
+          }}>
+            <h3 style={{ 
+              fontSize: '18px', 
+              fontWeight: '600', 
+              margin: 0,
+              color: '#ffffff'
+            }}>
+              Projects Overview
+            </h3>
+            <div style={{ 
+              display: 'flex', 
+              gap: '16px',
+              fontSize: '12px'
+            }}>
+              <span style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '4px',
+                color: '#94a3b8'
+              }}>
+                <div style={{ 
+                  width: '8px', 
+                  height: '8px', 
+                  borderRadius: '50%', 
+                  backgroundColor: '#8b5cf6' 
+                }}></div>
+                Funded
+              </span>
+              <span style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '4px',
+                color: '#94a3b8'
+              }}>
+                <div style={{ 
+                  width: '8px', 
+                  height: '8px', 
+                  borderRadius: '50%', 
+                  backgroundColor: '#06b6d4' 
+                }}></div>
+                Pending
+              </span>
+              <span style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '4px',
+                color: '#94a3b8'
+              }}>
+                Overdue
+              </span>
+            </div>
+          </div>
+          
+          <div style={{ 
+            fontSize: '32px', 
+            fontWeight: '700', 
+            marginBottom: '24px',
+            color: '#ffffff'
+          }}>
+            $27,500
+          </div>
+          
+          <div style={{ height: '200px' }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={projectsData}>
+                <defs>
+                  <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.1}/>
+                  </linearGradient>
+                </defs>
+                <XAxis 
+                  dataKey="name" 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#94a3b8', fontSize: 12 }}
+                />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#94a3b8', fontSize: 12 }}
+                  domain={[60, 100]}
+                  tickFormatter={(value) => `${value} K`}
+                />
+                <Line 
+                  type="monotone" 
+                  dataKey="value" 
+                  stroke="url(#colorGradient)"
+                  strokeWidth={3}
+                  dot={false}
+                  fill="url(#colorGradient)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Tasks Overview */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginBottom: '24px'
+          }}>
+            <h3 style={{ 
+              fontSize: '18px', 
+              fontWeight: '600', 
+              margin: 0,
+              color: '#ffffff'
+            }}>
+              Tasks Overview
+            </h3>
+            <span style={{ 
+              fontSize: '12px', 
+              color: '#94a3b8' 
+            }}>
+              Part 1 tasks
+            </span>
+          </div>
+          
+          <div style={{ 
+            position: 'relative',
+            height: '160px',
             display: 'flex',
-            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={tasksData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={50}
+                  outerRadius={80}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {tasksData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center'
+            }}>
+              <div style={{ 
+                fontSize: '32px', 
+                fontWeight: '700',
+                color: '#ffffff'
+              }}>
+                110
+              </div>
+              <div style={{ 
+                fontSize: '12px', 
+                color: '#94a3b8' 
+              }}>
+                Open tasks
+              </div>
+            </div>
+          </div>
+          
+          <div style={{ 
+            display: 'flex', 
             justifyContent: 'space-between',
-            height: '440px', // Increased height to match Top Products + Expenses Breakdown
-          }}
-        >
-          <div>
-            <div style={{ fontSize: '18px', marginBottom: '12px' }}>Sales Over Time</div>
-            <div style={{ fontSize: '14px', marginBottom: '8px' }}>Total Sales: $240.8K</div>
-            <div
-              style={{
-                height: '200px',
-                backgroundColor: '#1e1e2f',
-                borderRadius: '8px',
-                color: '#888',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              [Line Chart Placeholder]
+            marginTop: '16px'
+          }}>
+            <div>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                marginBottom: '8px'
+              }}>
+                <span style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '4px',
+                  fontSize: '12px',
+                  color: '#94a3b8'
+                }}>
+                  <div style={{ 
+                    width: '8px', 
+                    height: '8px', 
+                    borderRadius: '50%', 
+                    backgroundColor: '#8b5cf6' 
+                  }}></div>
+                  To Do
+                </span>
+                <span style={{ 
+                  fontSize: '14px', 
+                  fontWeight: '600',
+                  color: '#ffffff'
+                }}>
+                  60
+                </span>
+              </div>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                marginBottom: '8px'
+              }}>
+                <span style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '4px',
+                  fontSize: '12px',
+                  color: '#94a3b8'
+                }}>
+                  <div style={{ 
+                    width: '8px', 
+                    height: '8px', 
+                    borderRadius: '50%', 
+                    backgroundColor: '#06b6d4' 
+                  }}></div>
+                  In Progress
+                </span>
+                <span style={{ 
+                  fontSize: '14px', 
+                  fontWeight: '600',
+                  color: '#ffffff'
+                }}>
+                  34
+                </span>
+              </div>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px'
+              }}>
+                <span style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '4px',
+                  fontSize: '12px',
+                  color: '#94a3b8'
+                }}>
+                  <div style={{ 
+                    width: '8px', 
+                    height: '8px', 
+                    borderRadius: '50%', 
+                    backgroundColor: '#ec4899' 
+                  }}></div>
+                  Done
+                </span>
+                <span style={{ 
+                  fontSize: '14px', 
+                  fontWeight: '600',
+                  color: '#ffffff'
+                }}>
+                  7
+                </span>
+              </div>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '14px', color: '#aaa' }}>
-              Peak: $125.2K in June 2024
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Top Products + Expenses Breakdown */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {/* Top Products */}
-          <div style={{ backgroundColor: '#29293d', padding: '16px', borderRadius: '12px', height: '200px' }}>
-            <div style={{ fontSize: '18px', marginBottom: '12px' }}>Top Products</div>
-            <div
-              style={{
-                height: '120px',
-                backgroundColor: '#1e1e2f',
-                borderRadius: '8px',
-                color: '#888',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              [Bar Chart Placeholder]
-            </div>
-            <div style={{ marginTop: '12px', fontSize: '14px', color: '#d81b60', cursor: 'pointer' }}>
-              View report
-            </div>
-          </div>
-
-          {/* Expenses Breakdown  */}
-          <div style={{ backgroundColor: '#29293d', padding: '16px', borderRadius: '12px', height: '200px' }}>
-            <div style={{ fontSize: '18px', marginBottom: '12px' }}>Expenses Breakdown</div>
-            <div
-              style={{
-                height: '100px',
-                backgroundColor: '#1e1e2f',
-                borderRadius: '8px',
-                color: '#888',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              [Gauge Chart Placeholder]
-            </div>
-           <div style={{
-  marginTop: '12px',
-  fontSize: '14px',
-  color: '#aaa',
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  rowGap: '5px',
-  columnGap: '24px',
-}}>
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-    <span>Total:</span>
-    <strong style={{ color: '#fff' }}>23,648</strong>
-  </div>
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-    <span style={{ color: '#7e57c2' }}>Value 1:</span>
-    <span style={{ color: '#7e57c2' }}>15,024</span>
-  </div>
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-    <span style={{ color: '#42a5f5' }}>Value 2:</span>
-    <span style={{ color: '#42a5f5' }}>5,640</span>
-  </div>
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-    <span style={{ color: '#00acc1' }}>Value 3:</span>
-    <span style={{ color: '#00acc1' }}>2,984</span>
-  </div>
-</div>
           </div>
         </div>
       </div>
 
-      {/* Exec Alerts Section */}
-      <div style={{ display: 'flex', gap: '24px', marginBottom: '32px' }}>
-        {/* Recent Alerts */}
-        <div style={{ flex: 1, backgroundColor: '#29293d', padding: '16px', borderRadius: '12px' }}>
-          <div style={{ fontSize: '18px', marginBottom: '12px' }}>Recent Alerts</div>
-          <div style={{ fontSize: '14px', marginBottom: '8px', color: '#aaa' }}>Date: Dec 2024</div>
-          {[
-            { order: '#1237', status: 'Pending Approval', total: '$1,200', color: '#ff9800' },
-            { order: '#1236', status: 'Execute Task', total: '$1,500', color: '#4caf50' },
-          ].map((alert) => (
-            <div
-              key={alert.order}
-              style={{
-                backgroundColor: '#1e1e2f',
-                padding: '8px',
-                borderRadius: '6px',
-                marginBottom: '6px',
-              }}
-            >
-              <strong>{alert.order}</strong> — {alert.status} —{' '}
-              <span style={{ color: alert.color }}>{alert.total}</span>
-            </div>
-          ))}
+      {/* Bottom Section */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: '1fr 1fr 1fr 1fr', 
+        gap: '24px' 
+      }}>
+        {/* Current Projects */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <h3 style={{ 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            margin: '0 0 16px 0',
+            color: '#ffffff'
+          }}>
+            Current Projects
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {[
+              { name: 'Website Redesign', progress: 75, color: '#8b5cf6' },
+              { name: 'Mobile App Development', progress: 45, color: '#06b6d4' },
+              { name: 'CRM Implementation', progress: 20, color: '#ec4899' },
+              { name: 'Marketing Campaign', progress: 60, color: '#06b6d4' },
+            ].map((project, index) => (
+              <div key={index}>
+                <div style={{ 
+                  fontSize: '14px', 
+                  marginBottom: '8px',
+                  color: '#ffffff'
+                }}>
+                  {project.name}
+                </div>
+                <div style={{
+                  width: '100%',
+                  height: '4px',
+                  backgroundColor: '#334155',
+                  borderRadius: '2px',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    width: `${project.progress}%`,
+                    height: '100%',
+                    backgroundColor: project.color,
+                    borderRadius: '2px'
+                  }}></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Alternate Alerts */}
-        <div style={{ flex: 1, backgroundColor: '#29293d', padding: '16px', borderRadius: '12px' }}>
-          <div style={{ fontSize: '18px', marginBottom: '12px' }}>Alternate Alerts</div>
-          <div style={{ fontSize: '14px', marginBottom: '8px', color: '#aaa' }}>Date: Jan 2024</div>
-          {[
-            { order: '#1235', status: 'Pending Approval', total: '$1,000', color: '#ff9800' },
-            { order: '#1234', status: 'Execute Task', total: '$2,500', color: '#4caf50' },
-          ].map((alert) => (
-            <div
-              key={alert.order}
-              style={{
-                backgroundColor: '#1e1e2f',
-                padding: '8px',
-                borderRadius: '6px',
-                marginBottom: '6px',
-              }}
-            >
-              <strong>{alert.order}</strong> — {alert.status} —{' '}
-              <span style={{ color: alert.color }}>{alert.total}</span>
-            </div>
-          ))}
+        {/* Due Date */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <h3 style={{ 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            margin: '0 0 16px 0',
+            color: '#ffffff'
+          }}>
+            Due date
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {[
+              'Sep 30, 2023',
+              'Aug 25, 2023',
+              'Aug 20, 2023',
+              'Aug 10, 2023',
+            ].map((date, index) => (
+              <div key={index} style={{ 
+                fontSize: '14px',
+                color: '#94a3b8'
+              }}>
+                {date}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Action Buttons */}
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <select
-          style={{
-            backgroundColor: '#424242',
-            color: '#fff',
-            padding: '8px 12px',
-            borderRadius: '6px',
-            border: 'none',
-          }}
-        >
-          <option>Select date</option>
-          <option>Dec 2024</option>
-          <option>Jan 2024</option>
-        </select>
-        <button
-          style={{
-            backgroundColor: '#424242',
-            color: '#fff',
-            padding: '8px 16px',
-            borderRadius: '6px',
-            border: 'none',
-          }}
-        >
-          Export Data
-        </button>
-        <button
-          style={{
-            backgroundColor: '#d81b60',
-            color: '#fff',
-            padding: '8px 16px',
-            borderRadius: '6px',
-            border: 'none',
-          }}
-        >
-          Create Action List
-        </button>
+        {/* Team Members */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <h3 style={{ 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            margin: '0 0 16px 0',
+            color: '#ffffff'
+          }}>
+            Team Members
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {[
+              { name: 'Lead Developer', role: 'Right nsguile' },
+              { name: 'Michael Johnson', role: 'US Stugader' },
+              { name: 'Sarah Williams', role: 'GB Sgoulden' },
+              { name: 'David Brown', role: 'Marketdg' },
+              { name: 'John Carter', role: 'Project Manager' },
+            ].map((member, index) => (
+              <div key={index} style={{ 
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: '#334155',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
+                  color: '#94a3b8'
+                }}>
+                  {member.name.charAt(0)}
+                </div>
+                <div>
+                  <div style={{ 
+                    fontSize: '14px',
+                    color: '#ffffff',
+                    fontWeight: '500'
+                  }}>
+                    {member.name}
+                  </div>
+                  <div style={{ 
+                    fontSize: '12px',
+                    color: '#94a3b8'
+                  }}>
+                    {member.role}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tasks */}
+        <div style={{
+          backgroundColor: '#1e293b',
+          padding: '24px',
+          borderRadius: '12px',
+          border: '1px solid #334155'
+        }}>
+          <h3 style={{ 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            margin: '0 0 16px 0',
+            color: '#ffffff'
+          }}>
+            Tasks
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {[
+              '12 tasks',
+              '8 tasks',
+              '5 tasks',
+              '12 tasks',
+              '8 tasks',
+            ].map((task, index) => (
+              <div key={index} style={{ 
+                fontSize: '14px',
+                color: '#94a3b8'
+              }}>
+                {task}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+

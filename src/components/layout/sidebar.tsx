@@ -8,7 +8,8 @@ const items = [
   { to: '/finance/invoices', label: 'Invoices', moduleKey: 'finance' },
   { to: '/hr/employees', label: 'Employees', moduleKey: 'hr' },
   { to: '/inventory/products', label: 'Products', moduleKey: 'inventory' },
-  { to: '/husbandry/livestock', label: 'Livestock', moduleKey: 'husbandry' }
+  { to: '/husbandry/livestock', label: 'Livestock', moduleKey: 'husbandry' },
+  { to: '/projects', label: 'Projects', moduleKey: 'projects' }
 ];
 
 const Sidebar: React.FC = () => {
