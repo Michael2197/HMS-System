@@ -1,6 +1,6 @@
 // electron/main.js
-import { app, BrowserWindow, ipcMain } from "electron";
-import path from "path";
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
 let mainWindow = null;
 
@@ -12,7 +12,7 @@ function createWindow() {
     minHeight: 768,
     show: false,
     webPreferences: {
-      preload: path.join("electron", "preload.js"),
+      preload: path.join(__dirname, "preload.js"),
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -22,7 +22,7 @@ function createWindow() {
     mainWindow.loadURL("http://localhost:5173");
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile("dist/index.html");
+    mainWindow.loadFile(path.join(__dirname, "../../dist/index.html"));
   }
 
   mainWindow.once("ready-to-show", () => mainWindow.show());

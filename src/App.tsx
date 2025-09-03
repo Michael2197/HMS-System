@@ -5,6 +5,10 @@ import AttendancePage from "./pages/hr/attendancepage";
 import PayrollPage from "./pages/hr/payrollpage";
 import Project from "./modules/project/components/Project";
 
+// Import React Icons
+import { AiFillHome, AiFillFolder, AiOutlineCheckSquare, AiOutlineTeam, AiOutlineCalendar, AiOutlineClockCircle, AiOutlineUsergroupAdd, AiOutlineFieldTime, AiOutlineDollarCircle, AiOutlineBarChart, AiOutlineSetting, AiOutlineFileText, AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
+import { MdDashboard } from "react-icons/md";
+
 const styles: Record<string, React.CSSProperties> = {
   container: {
     display: "flex",
@@ -251,21 +255,62 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>🏠</div>
+              <div style={styles.navIcon}><AiFillHome /></div>
               Dashboard
             </NavLink>
             
-            <NavLink
-              to="/projects"
-              style={({ isActive }) =>
-                isActive
-                  ? { ...styles.navLink, ...styles.activeLink }
-                  : styles.navLink
-              }
-            >
-              <div style={styles.navIcon}>📁</div>
-              Projects
-            </NavLink>
+            {/* Projects Dropdown */}
+            <div>
+              <div
+                onClick={() => toggleDropdown("projects")}
+                style={{
+                  ...styles.navLink,
+                  cursor: "pointer",
+                  justifyContent: "space-between"
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div style={styles.navIcon}><AiFillFolder /></div>
+                  Projects
+                </div>
+                <span style={{ fontSize: "12px" }}>
+                  {openDropdowns.projects ? "▼" : "▶"}
+                </span>
+              </div>
+              {openDropdowns.projects && (
+                <div style={{
+                  marginLeft: "32px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "4px",
+                  marginTop: "4px",
+                  marginBottom: "8px"
+                }}>
+                  <NavLink
+                    to="/projects/dashboard"
+                    style={({ isActive }) =>
+                      isActive
+                        ? { ...styles.navLink, ...styles.activeLink, padding: "8px 16px", fontSize: "13px" }
+                        : { ...styles.navLink, padding: "8px 16px", fontSize: "13px" }
+                    }
+                  >
+                    <div style={styles.navIcon}><MdDashboard /></div>
+                    Dashboard
+                  </NavLink>
+                  <NavLink
+                    to="/projects/management"
+                    style={({ isActive }) =>
+                      isActive
+                        ? { ...styles.navLink, ...styles.activeLink, padding: "8px 16px", fontSize: "13px" }
+                        : { ...styles.navLink, padding: "8px 16px", fontSize: "13px" }
+                    }
+                  >
+                    <div style={styles.navIcon}><AiFillFolder /></div>
+                    Management
+                  </NavLink>
+                </div>
+              )}
+            </div>
             
             <NavLink
               to="/tasks"
@@ -275,7 +320,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>✓</div>
+              <div style={styles.navIcon}><AiOutlineCheckSquare /></div>
               Tasks
             </NavLink>
             
@@ -287,7 +332,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>👥</div>
+              <div style={styles.navIcon}><AiOutlineTeam /></div>
               Team
             </NavLink>
             
@@ -299,7 +344,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>📅</div>
+              <div style={styles.navIcon}><AiOutlineCalendar /></div>
               Calendar
             </NavLink>
             
@@ -311,7 +356,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>⏰</div>
+              <div style={styles.navIcon}><AiOutlineClockCircle /></div>
               Time
             </NavLink>
             
@@ -326,7 +371,7 @@ function App() {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div style={styles.navIcon}>👥</div>
+                  <div style={styles.navIcon}><AiOutlineUsergroupAdd /></div>
                   HR
                 </div>
                 <span style={{ fontSize: "12px" }}>
@@ -350,7 +395,7 @@ function App() {
                         : { ...styles.navLink, padding: "8px 16px", fontSize: "13px" }
                     }
                   >
-                    <div style={styles.navIcon}>🕒</div>
+                    <div style={styles.navIcon}><AiOutlineFieldTime /></div>
                     Attendance
                   </NavLink>
                   <NavLink
@@ -361,7 +406,7 @@ function App() {
                         : { ...styles.navLink, padding: "8px 16px", fontSize: "13px" }
                     }
                   >
-                    <div style={styles.navIcon}>💰</div>
+                    <div style={styles.navIcon}><AiOutlineDollarCircle /></div>
                     Payroll
                   </NavLink>
                 </div>
@@ -376,7 +421,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>📊</div>
+              <div style={styles.navIcon}><AiOutlineBarChart /></div>
               Reports
             </NavLink>
             
@@ -388,7 +433,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>⚙️</div>
+              <div style={styles.navIcon}><AiOutlineSetting /></div>
               Settings
             </NavLink>
             
@@ -400,7 +445,7 @@ function App() {
                   : styles.navLink
               }
             >
-              <div style={styles.navIcon}>📄</div>
+              <div style={styles.navIcon}><AiOutlineFileText /></div>
               Template pages
             </NavLink>
           </nav>
@@ -411,7 +456,7 @@ function App() {
           {/* Header */}
           <header style={styles.header}>
             <div style={styles.searchContainer}>
-              <div style={styles.searchIcon}>🔍</div>
+              <div style={styles.searchIcon}><AiOutlineSearch /></div>
               <input
                 type="text"
                 placeholder="Search..."
@@ -419,7 +464,7 @@ function App() {
               />
             </div>
             <button style={styles.newProjectBtn}>
-              + New Project
+              <AiOutlinePlus /> New Project
             </button>
           </header>
 
@@ -427,8 +472,8 @@ function App() {
           <div style={styles.content}>
             <Routes>
               <Route path="/" element={<DashboardPage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/projects/dashboard" element={<DashboardPage />} />
+              <Route path="/projects/management" element={<ProjectsPage />} />
               <Route path="/tasks" element={<TasksPage />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
@@ -478,4 +523,6 @@ function App() {
 }
 
 export default App;
+
+
 
