@@ -1,0 +1,1 @@
+export { default as Leave } from './components/Leave'; 
