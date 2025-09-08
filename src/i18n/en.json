@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "ERP Dashboard",
+    "welcome": "Welcome, {{name}}"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "finance": "Finance",
+    "hr": "HR",
+    "husbandry": "Husbandry",
+    "inventory": "Inventory",
+    "cultivation": "Cultivation",
+    "tasks": "Tasks",
+    "reports": "Reports",
+    "settings": "Settings",
+    "auth": "Authentication"
+  },
+  "actions": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "update": "Update",
+    "cancel": "Cancel",
+    "save": "Save",
+    "export": "Export",
+    "import": "Import",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "submit": "Submit",
+    "back": "Back",
+    "view": "View",
+    "approve": "Approve",
+    "reject": "Reject",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember me",
+    "invalidCredentials": "Invalid email or password",
+    "logoutSuccess": "You have been logged out"
+  },
+  "finance": {
+    "title": "Finance",
+    "invoices": "Invoices",
+    "payments": "Payments",
+    "payroll": "Payroll",
+    "generateInvoice": "Generate Invoice",
+    "invoiceNumber": "Invoice Number",
+    "amount": "Amount",
+    "status": "Status",
+    "date": "Date",
+    "dueDate": "Due Date"
+  },
+  "hr": {
+    "title": "Human Resources",
+    "employees": "Employees",
+    "recruitment": "Recruitment",
+    "training": "Training",
+    "payroll": "Payroll",
+    "employeeList": "Employee List",
+    "addEmployee": "Add Employee"
+  },
+  "husbandry": {
+    "title": "Husbandry",
+    "livestock": "Livestock",
+    "vaccination": "Vaccination",
+    "feedManagement": "Feed Management",
+    "adg": "Average Daily Gain",
+    "fcr": "Feed Conversion Ratio",
+    "mortalityRate": "Mortality Rate"
+  },
+  "inventory": {
+    "title": "Inventory",
+    "products": "Products",
+    "suppliers": "Suppliers",
+    "stockLevels": "Stock Levels",
+    "addProduct": "Add Product"
+  },
+  "cultivation": {
+    "title": "Cultivation",
+    "cropManagement": "Crop Management",
+    "irrigation": "Irrigation",
+    "harvest": "Harvest",
+    "yieldForecast": "Yield Forecast"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "assignedTasks": "Assigned Tasks",
+    "completedTasks": "Completed Tasks",
+    "pendingTasks": "Pending Tasks"
+  },
+  "reports": {
+    "title": "Reports",
+    "financial": "Financial Reports",
+    "employee": "Employee Reports",
+    "livestock": "Livestock Reports",
+    "inventory": "Inventory Reports",
+    "crop": "Crop Reports"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications"
+  },
+  "common": {
+    "noData": "No data available",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "لوحة التحكم",
+    "welcome": "مرحباً، {{name}}"
+  },
+  "nav": {
+    "dashboard": "الرئيسية",
+    "finance": "المالية",
+    "hr": "الموارد البشرية",
+    "husbandry": "الثروة الحيوانية",
+    "inventory": "المخزون",
+    "cultivation": "الزراعة",
+    "tasks": "المهام",
+    "reports": "التقارير",
+    "settings": "الإعدادات",
+    "auth": "تسجيل الدخول"
+  },
+  "actions": {
+    "add": "إضافة",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "update": "تحديث",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "export": "تصدير",
+    "import": "استيراد",
+    "search": "بحث",
+    "filter": "تصفية",
+    "reset": "إعادة تعيين",
+    "submit": "إرسال",
+    "back": "رجوع",
+    "view": "عرض",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "register": "تسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "logoutSuccess": "تم تسجيل الخروج بنجاح"
+  },
+  "finance": {
+    "title": "المالية",
+    "invoices": "الفواتير",
+    "payments": "المدفوعات",
+    "payroll": "الرواتب",
+    "generateInvoice": "إنشاء فاتورة",
+    "invoiceNumber": "رقم الفاتورة",
+    "amount": "المبلغ",
+    "status": "الحالة",
+    "date": "التاريخ",
+    "dueDate": "تاريخ الاستحقاق"
+  },
+  "hr": {
+    "title": "الموارد البشرية",
+    "employees": "الموظفون",
+    "recruitment": "التوظيف",
+    "training": "التدريب",
+    "payroll": "الرواتب",
+    "employeeList": "قائمة الموظفين",
+    "addEmployee": "إضافة موظف"
+  },
+  "husbandry": {
+    "title": "الثروة الحيوانية",
+    "livestock": "المواشي",
+    "vaccination": "التطعيم",
+    "feedManagement": "إدارة الأعلاف",
+    "adg": "معدل الزيادة اليومية",
+    "fcr": "معدل تحويل الغذاء",
+    "mortalityRate": "معدل النفوق"
+  },
+  "inventory": {
+    "title": "المخزون",
+    "products": "المنتجات",
+    "suppliers": "الموردون",
+    "stockLevels": "مستويات المخزون",
+    "addProduct": "إضافة منتج"
+  },
+  "cultivation": {
+    "title": "الزراعة",
+    "cropManagement": "إدارة المحاصيل",
+    "irrigation": "الري",
+    "harvest": "الحصاد",
+    "yieldForecast": "توقعات الإنتاج"
+  },
+  "tasks": {
+    "title": "المهام",
+    "assignedTasks": "المهام المسندة",
+    "completedTasks": "المهام المكتملة",
+    "pendingTasks": "المهام المعلقة"
+  },
+  "reports": {
+    "title": "التقارير",
+    "financial": "التقارير المالية",
+    "employee": "تقارير الموظفين",
+    "livestock": "تقارير الثروة الحيوانية",
+    "inventory": "تقارير المخزون",
+    "crop": "تقارير المحاصيل"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "profile": "الملف الشخصي",
+    "preferences": "التفضيلات",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "notifications": "الإشعارات"
+  },
+  "common": {
+    "noData": "لا توجد بيانات",
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ",
+    "success": "تمت العملية بنجاح"
+  }
+}

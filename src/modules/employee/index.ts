@@ -1,0 +1,1 @@
+export { default as Employee } from './components/Employee'; 
