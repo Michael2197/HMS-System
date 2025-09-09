@@ -14,6 +14,7 @@ const items: NavItem[] = [
   { to: '/dashboard', label: 'Dashboard', moduleKey: 'reporting' },
   { to: '/finance/overview', label: 'Finance', moduleKey: 'finance' },
   { to: '/sales/overview', label: 'Sales', moduleKey: 'sales' },
+  { to: '/crm/overview', label: 'CRM', moduleKey: 'crm' },
   { to: '/marketing/overview', label: 'Marketing', moduleKey: 'marketing' },
   { to: '/procurement/overview', label: 'Procurement', moduleKey: 'procurement' },
   { to: '/husbandry/overview', label: 'Husbandry', moduleKey: 'husbandry' },

@@ -41,6 +41,9 @@ import Opportunities from "./modules/sales/components/Opportunities";
 import Orders from "./modules/sales/components/Orders";
 import Accounts from "./modules/sales/components/Accounts";
 import Time from "./modules/sales/components/Time";
+import { Activities, Contacts, CRMDashboard, Deals, Reports } from "./modules/crm";
+import ActivitiesPage from "./pages/crm/ActivitiesPage";
+import Companies from "./modules/crm/components/Companies";
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
@@ -884,6 +887,179 @@ function App() {
               )}
             </div>
 
+            {/* CRM Dropdown */}
+            <div>
+              <div
+                onClick={() => toggleDropdown("crm")}
+                style={{
+                  ...styles.navLink,
+                  cursor: "pointer",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "12px" }}
+                >
+                  <div style={styles.navIcon}>
+                    <AiOutlineBarChart />
+                  </div>
+                  CRM
+                </div>
+                <span style={{ fontSize: "12px" }}>
+                  {openDropdowns.crm ? "▼" : "▶"}
+                </span>
+              </div>
+              {openDropdowns.crm && (
+                <div
+                  style={{
+                    marginLeft: "32px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "4px",
+                    marginTop: "4px",
+                    marginBottom: "8px",
+                  }}
+                >
+                  <NavLink
+                    to="/crm/dashboard"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <MdDashboard />
+                    </div>
+                    Dashboard
+                  </NavLink>
+                  <NavLink
+                    to="/crm/contacts"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <AiOutlineUsergroupAdd />
+                    </div>
+                    Contacts
+                  </NavLink>
+
+                  <NavLink
+                    to="/crm/companies"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <AiOutlineDollarCircle />
+                    </div>
+                    Companies
+                  </NavLink>
+
+                  <NavLink
+                    to="/crm/deals"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <AiOutlineFieldTime />
+                    </div>
+                    Deals
+                  </NavLink>
+
+                  <NavLink
+                    to="/crm/activities"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <AiOutlineBarChart />
+                    </div>
+                    Activities
+                  </NavLink>
+
+                  <NavLink
+                    to="/crm/reports"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            ...styles.navLink,
+                            ...styles.activeLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                        : {
+                            ...styles.navLink,
+                            padding: "8px 16px",
+                            fontSize: "13px",
+                          }
+                    }
+                  >
+                    <div style={styles.navIcon}>
+                      <AiOutlineFileText />
+                    </div>
+                    Reports
+                  </NavLink>
+                </div>
+              )}
+            </div>
+
             {/* Marketing Dropdown */}
             <div>
               <div
@@ -1194,12 +1370,27 @@ function App() {
               {/* New Module Routes */}
               <Route path="/finance/dashboard" element={<FinanceDashboard />} />
               <Route path="/finance/overview" element={<Finance />} />
+
+              {/* CRM Routes */}
+              <Route path="/crm/dashboard" element={<CRMDashboard/>} />
+              <Route path="/crm/contacts" element={<Contacts/>} />
+              <Route path="/crm/deals" element={<Deals/>} />
+              <Route path="/crm/reports" element={<Reports/>} />
+              <Route path="/crm/companies" element={<Companies/>} />
+              <Route path="/crm/activities" element={<Activities/>} />
+
+
+              {/* Sales Routes */}
               <Route path="/sales/dashboard" element={<SalesDashboard />} />
-              <Route path="/sales/Leads" element={<Leads/>} />
-              <Route path="/sales/Opportunities" element={<Opportunities/>} />
-              <Route path="/sales/Orders" element={<Orders/>} />
-              <Route path="/sales/Accounts" element={<Accounts/>} />
-              <Route path="/sales/Time" element={<Time/>} />
+              <Route path="/sales/Leads" element={<Leads />} />
+              <Route path="/sales/Opportunities" element={<Opportunities />} />
+              <Route path="/sales/Orders" element={<Orders />} />
+              <Route path="/sales/Accounts" element={<Accounts />} />
+              <Route path="/sales/Time" element={<Time />} />
+
+
+              
+
 
 
               <Route

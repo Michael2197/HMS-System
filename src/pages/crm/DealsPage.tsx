@@ -1,6 +1,6 @@
 import React from "react";
 import { Deals } from "../../modules/crm";
 
-export default function OpportunitiesPage() {
+export default function DealsPage() {
   return <Deals />;
 }
