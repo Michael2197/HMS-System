@@ -29,3 +29,4 @@ export const crmDealStages = [
   { stage: "Closed Won", count: 3, value: 45000 },
   { stage: "Closed Lost", count: 2, value: 25000 },
 ];
+

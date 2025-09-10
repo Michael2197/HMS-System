@@ -73,6 +73,7 @@ const Project: React.FC = () => {
           <TextField label="Description" fullWidth multiline rows={3} sx={{ mt: 2 }} value={newProject.description} onChange={(e) => setNewProject({ ...newProject, description: e.target.value })} />
           <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel>Status</InputLabel>
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Select label="Status" value={newProject.status} onChange={(e) => setNewProject({ ...newProject, status: e.target.value as any })}>
               {statuses.map((status) => (
                 <MenuItem key={status} value={status}>{status}</MenuItem>

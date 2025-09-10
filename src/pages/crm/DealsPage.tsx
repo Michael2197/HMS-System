@@ -4,3 +4,4 @@ import { Deals } from "../../modules/crm";
 export default function DealsPage() {
   return <Deals />;
 }
+

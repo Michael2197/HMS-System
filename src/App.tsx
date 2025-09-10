@@ -10,7 +10,6 @@ import PerformancePage from "./modules/performance/components/Performance";
 import RecruitmentPage from "./modules/recruitment/components/Recruitment";
 import AnalyticsPage from "./modules/analytics/components/Analytics";
 import EmployeePage from "./modules/employee/components/Employee";
-import HelpdeskPage from "./modules/helpdesk/components/Helpdesk";
 import Project from "./modules/project/components/Project";
 
 // Import new module components
@@ -42,7 +41,6 @@ import Orders from "./modules/sales/components/Orders";
 import Accounts from "./modules/sales/components/Accounts";
 import Time from "./modules/sales/components/Time";
 import { Activities, Contacts, CRMDashboard, Deals, Reports } from "./modules/crm";
-import ActivitiesPage from "./pages/crm/ActivitiesPage";
 import Companies from "./modules/crm/components/Companies";
 
 const styles: Record<string, React.CSSProperties> = {
@@ -209,6 +207,7 @@ const LivestockPage = Page("🐑 Husbandry Livestock");
 const ProductsPage = Page("📦 Inventory Products");
 const StockPage = Page("🚚 Inventory Stock");
 const WarehousesPage = Page("🏭 Inventory Warehouses");
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MarketingAnalyticsPage = Page("📊 Marketing Analytics");
 const CampaignsPage = Page("📣 Marketing Campaigns");
 const PurchaseOrdersPage = Page("🛒 Procurement Orders");

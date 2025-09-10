@@ -4,3 +4,4 @@ import { Reports } from "../../modules/crm";
 export default function ReportsPage() {
   return <Reports />;
 }
+
