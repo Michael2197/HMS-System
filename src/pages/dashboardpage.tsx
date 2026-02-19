@@ -1,20 +1,19 @@
-import React from 'react';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 // Sample data for charts
 const projectsData = [
-  { name: 'Jan', value: 70 },
-  { name: 'Website', value: 85 },
-  { name: 'Qualified', value: 75 },
-  { name: 'Proposal', value: 90 },
-  { name: 'Negotiation', value: 65 },
-  { name: 'Dot', value: 80 },
+  { name: 'Mon', value: 72 },
+  { name: 'Tue', value: 88 },
+  { name: 'Wed', value: 79 },
+  { name: 'Thu', value: 91 },
+  { name: 'Fri', value: 84 },
+  { name: 'Sat', value: 68 },
 ];
 
 const tasksData = [
-  { name: 'To Do', value: 60, color: '#8b5cf6' },
-  { name: 'In Progress', value: 34, color: '#06b6d4' },
-  { name: 'Done', value: 7, color: '#ec4899' },
+  { name: 'Waiting', value: 22, color: '#8b5cf6' },
+  { name: 'In Service', value: 14, color: '#06b6d4' },
+  { name: 'Completed', value: 9, color: '#ec4899' },
 ];
 
 const COLORS = ['#8b5cf6', '#06b6d4', '#ec4899'];
@@ -23,7 +22,7 @@ export default function DashboardPage() {
   return (
     <div style={{ 
       padding: '24px', 
-      backgroundColor: '#0f172a', 
+      backgroundColor: 'var(--hms-bg)', 
       color: '#fff', 
       minHeight: '100vh',
       fontFamily: "'Inter', sans-serif"
@@ -36,14 +35,14 @@ export default function DashboardPage() {
           margin: '0 0 8px 0',
           color: '#ffffff'
         }}>
-          Welcome back, John
+          Operations Dashboard
         </h1>
         <p style={{ 
           fontSize: '16px', 
           color: '#94a3b8', 
           margin: 0 
         }}>
-          Manage your projects and tasks, from this dashboard
+          Monitor daily hospital operations, queues, and service throughput
         </p>
       </div>
 
@@ -57,29 +56,29 @@ export default function DashboardPage() {
         {[
           { 
             icon: '📋', 
-            label: 'All Projects', 
-            value: '12', 
+            label: 'Departments', 
+            value: '8', 
             bgColor: '#1e293b',
             iconColor: '#64748b'
           },
           { 
             icon: '📌', 
-            label: 'To Do', 
-            value: '76', 
+            label: 'Waiting', 
+            value: '22', 
             bgColor: '#1e293b',
             iconColor: '#8b5cf6'
           },
           { 
             icon: '⚡', 
-            label: 'In Progress', 
-            value: '34', 
+            label: 'In Service', 
+            value: '14', 
             bgColor: '#1e293b',
             iconColor: '#06b6d4'
           },
           { 
             icon: '✅', 
-            label: 'Completed', 
-            value: '8', 
+            label: 'Completed Today', 
+            value: '9', 
             bgColor: '#1e293b',
             iconColor: '#10b981'
           },
@@ -143,7 +142,7 @@ export default function DashboardPage() {
               margin: 0,
               color: '#ffffff'
             }}>
-              Projects Overview
+              Patient Flow (Weekly)
             </h3>
             <div style={{ 
               display: 'flex', 
@@ -162,7 +161,7 @@ export default function DashboardPage() {
                   borderRadius: '50%', 
                   backgroundColor: '#8b5cf6' 
                 }}></div>
-                Funded
+                OPD
               </span>
               <span style={{ 
                 display: 'flex', 
@@ -176,7 +175,7 @@ export default function DashboardPage() {
                   borderRadius: '50%', 
                   backgroundColor: '#06b6d4' 
                 }}></div>
-                Pending
+                IPD
               </span>
               <span style={{ 
                 display: 'flex', 
@@ -184,7 +183,7 @@ export default function DashboardPage() {
                 gap: '4px',
                 color: '#94a3b8'
               }}>
-                Overdue
+                ER
               </span>
             </div>
           </div>
@@ -195,7 +194,7 @@ export default function DashboardPage() {
             marginBottom: '24px',
             color: '#ffffff'
           }}>
-            $27,500
+            482
           </div>
           
           <div style={{ height: '200px' }}>
@@ -233,7 +232,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Tasks Overview */}
+        {/* Queue Overview */}
         <div style={{
           backgroundColor: '#1e293b',
           padding: '24px',
@@ -252,13 +251,13 @@ export default function DashboardPage() {
               margin: 0,
               color: '#ffffff'
             }}>
-              Tasks Overview
+              Queue Overview
             </h3>
             <span style={{ 
               fontSize: '12px', 
               color: '#94a3b8' 
             }}>
-              Part 1 tasks
+              Today
             </span>
           </div>
           
@@ -280,7 +279,7 @@ export default function DashboardPage() {
                   paddingAngle={2}
                   dataKey="value"
                 >
-                  {tasksData.map((entry, index) => (
+                  {tasksData.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
@@ -298,13 +297,13 @@ export default function DashboardPage() {
                 fontWeight: '700',
                 color: '#ffffff'
               }}>
-                110
+                45
               </div>
               <div style={{ 
                 fontSize: '12px', 
                 color: '#94a3b8' 
               }}>
-                Open tasks
+                Patients in queue
               </div>
             </div>
           </div>
@@ -334,14 +333,14 @@ export default function DashboardPage() {
                     borderRadius: '50%', 
                     backgroundColor: '#8b5cf6' 
                   }}></div>
-                  To Do
+                  Waiting
                 </span>
                 <span style={{ 
                   fontSize: '14px', 
                   fontWeight: '600',
                   color: '#ffffff'
                 }}>
-                  60
+                  22
                 </span>
               </div>
               <div style={{ 
@@ -363,14 +362,14 @@ export default function DashboardPage() {
                     borderRadius: '50%', 
                     backgroundColor: '#06b6d4' 
                   }}></div>
-                  In Progress
+                  In Service
                 </span>
                 <span style={{ 
                   fontSize: '14px', 
                   fontWeight: '600',
                   color: '#ffffff'
                 }}>
-                  34
+                  14
                 </span>
               </div>
               <div style={{ 
@@ -391,14 +390,14 @@ export default function DashboardPage() {
                     borderRadius: '50%', 
                     backgroundColor: '#ec4899' 
                   }}></div>
-                  Done
+                  Completed
                 </span>
                 <span style={{ 
                   fontSize: '14px', 
                   fontWeight: '600',
                   color: '#ffffff'
                 }}>
-                  7
+                  9
                 </span>
               </div>
             </div>
@@ -412,7 +411,7 @@ export default function DashboardPage() {
         gridTemplateColumns: '1fr 1fr 1fr 1fr', 
         gap: '24px' 
       }}>
-        {/* Current Projects */}
+        {/* Ward Occupancy */}
         <div style={{
           backgroundColor: '#1e293b',
           padding: '24px',
@@ -425,14 +424,14 @@ export default function DashboardPage() {
             margin: '0 0 16px 0',
             color: '#ffffff'
           }}>
-            Current Projects
+            Ward Occupancy
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {[
-              { name: 'Website Redesign', progress: 75, color: '#8b5cf6' },
-              { name: 'Mobile App Development', progress: 45, color: '#06b6d4' },
-              { name: 'CRM Implementation', progress: 20, color: '#ec4899' },
-              { name: 'Marketing Campaign', progress: 60, color: '#06b6d4' },
+              { name: 'ICU', progress: 86, color: '#ec4899' },
+              { name: 'General Ward', progress: 72, color: '#8b5cf6' },
+              { name: 'Pediatrics', progress: 64, color: '#06b6d4' },
+              { name: 'Maternity', progress: 58, color: '#06b6d4' },
             ].map((project, index) => (
               <div key={index}>
                 <div style={{ 
@@ -461,7 +460,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Due Date */}
+        {/* Upcoming Shifts */}
         <div style={{
           backgroundColor: '#1e293b',
           padding: '24px',
@@ -474,14 +473,14 @@ export default function DashboardPage() {
             margin: '0 0 16px 0',
             color: '#ffffff'
           }}>
-            Due date
+            Upcoming Shifts
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              'Sep 30, 2023',
-              'Aug 25, 2023',
-              'Aug 20, 2023',
-              'Aug 10, 2023',
+              'Today 08:00 - 16:00 (Day Shift)',
+              'Today 16:00 - 00:00 (Evening Shift)',
+              'Tomorrow 00:00 - 08:00 (Night Shift)',
+              'Tomorrow 08:00 - 16:00 (Day Shift)',
             ].map((date, index) => (
               <div key={index} style={{ 
                 fontSize: '14px',
@@ -493,7 +492,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Team Members */}
+        {/* On-Call Staff */}
         <div style={{
           backgroundColor: '#1e293b',
           padding: '24px',
@@ -506,15 +505,15 @@ export default function DashboardPage() {
             margin: '0 0 16px 0',
             color: '#ffffff'
           }}>
-            Team Members
+            On-Call Staff
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              { name: 'Lead Developer', role: 'Right nsguile' },
-              { name: 'Michael Johnson', role: 'US Stugader' },
-              { name: 'Sarah Williams', role: 'GB Sgoulden' },
-              { name: 'David Brown', role: 'Marketdg' },
-              { name: 'John Carter', role: 'Project Manager' },
+              { name: 'Dr. Omar Ali', role: 'Cardiology' },
+              { name: 'Dr. Sara Youssef', role: 'Orthopedics' },
+              { name: 'Nurse Dina', role: 'ER Triage' },
+              { name: 'Lab Tech Karim', role: 'Hematology' },
+              { name: 'Pharmacist Salma', role: 'Dispensing' },
             ].map((member, index) => (
               <div key={index} style={{ 
                 display: 'flex',
@@ -554,7 +553,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Tasks */}
+        {/* Critical Alerts */}
         <div style={{
           backgroundColor: '#1e293b',
           padding: '24px',
@@ -567,15 +566,15 @@ export default function DashboardPage() {
             margin: '0 0 16px 0',
             color: '#ffffff'
           }}>
-            Tasks
+            Critical Alerts
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              '12 tasks',
-              '8 tasks',
-              '5 tasks',
-              '12 tasks',
-              '8 tasks',
+              'Low stock: Paracetamol 500mg',
+              'Pending payment: INV-76002',
+              'Lab urgent: LAB-90012 (CRP)',
+              'High occupancy: ICU 86%',
+              'Queue spike: OPD waiting 22',
             ].map((task, index) => (
               <div key={index} style={{ 
                 fontSize: '14px',

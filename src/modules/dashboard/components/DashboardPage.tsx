@@ -10,50 +10,50 @@ export default function DashboardPage() {
   const dashboardConfig = {
     keyMetrics: [
       {
-        title: "Revenues",
-        value: "50.8K",
-        change: "28.4%",
+        title: "Patients Today",
+        value: "128",
+        change: "8.2%",
         changeType: "increase" as const,
-        icon: "dollar",
-        options: "three dots"
-      },
-      {
-        title: "Expenses",
-        value: "23.6K",
-        change: "12.6%",
-        changeType: "decrease" as const,
         icon: "person",
         options: "three dots"
       },
       {
-        title: "Sales",
-        value: "756",
-        change: "3.9%",
+        title: "Appointments",
+        value: "76",
+        change: "3.1%",
         changeType: "increase" as const,
         icon: "sales tag",
         options: "three dots"
       },
       {
-        title: "Inventory Levels",
-        value: "2.3K",
-        change: "11.3%",
+        title: "Admissions",
+        value: "14",
+        change: "6.5%",
         changeType: "increase" as const,
+        icon: "star",
+        options: "three dots"
+      },
+      {
+        title: "Bed Occupancy",
+        value: "82%",
+        change: "2.4%",
+        changeType: "decrease" as const,
         icon: "star",
         options: "three dots"
       }
     ],
     charts: {
       salesOverTime: {
-        title: "Sales over time",
-        totalSales: "$240.8K",
-        increase: "24.6%",
+        title: "Hospital activity over time",
+        totalSales: "1,248 Visits",
+        increase: "12.3%",
         legend: [
           {
-            name: "Revenue",
+            name: "Visits",
             color: "purple"
           },
           {
-            name: "Expenses",
+            name: "Admissions",
             color: "blue"
           }
         ],
@@ -64,35 +64,35 @@ export default function DashboardPage() {
           x: "months"
         },
         tooltip: {
-          value: "$125.2K",
-          change: "12.5%",
+          value: "142",
+          change: "5.4%",
           date: "June 21, 2024"
         }
       },
       topProducts: {
-        title: "Top Products",
+        title: "Top Departments",
         type: "bar chart",
         timeLabels: ["12 AM", "4 AM", "8 AM", "4 PM", "8 PM"],
         viewReportLink: "View report"
       },
       expensesBreakdown: {
-        mainValue: "23,648",
-        description: "Expenses Breakdown",
+        mainValue: "128",
+        description: "Patient Mix",
         type: "donut chart",
         segments: [
           {
-            value: "15,624",
-            label: "Value 1",
+            value: "74",
+            label: "Outpatient",
             color: "purple"
           },
           {
-            value: "5,546",
-            label: "Value 2",
+            value: "38",
+            label: "Inpatient",
             color: "blue"
           },
           {
-            value: "2,478",
-            label: "Value 3",
+            value: "16",
+            label: "Emergency",
             color: "light blue"
           }
         ]
@@ -106,12 +106,12 @@ export default function DashboardPage() {
       },
       tables: [
         {
-          title: "Recent Alerts",
+          title: "Clinical & Ops Alerts",
           columns: [
-            "Order",
+            "Case",
             "Date",
             "Status",
-            "Total"
+            "Notes"
           ],
           statusTagColors: {
             "Low Stock": "red",
@@ -122,12 +122,12 @@ export default function DashboardPage() {
           }
         },
         {
-          title: "Alternate Alerts",
+          title: "Finance & Inventory Alerts",
           columns: [
-            "Order",
+            "Case",
             "Date",
             "Status",
-            "Total"
+            "Notes"
           ],
           statusTagColors: {
             "Low Stock": "red",
@@ -144,7 +144,7 @@ export default function DashboardPage() {
   return (
     <div style={{
       padding: '24px',
-      backgroundColor: '#0f172a',
+      backgroundColor: 'var(--hms-bg)',
       color: '#fff',
       minHeight: '100vh',
       fontFamily: "'Inter', sans-serif",
